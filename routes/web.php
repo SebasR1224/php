@@ -78,3 +78,8 @@ Route::get('/categories/form/{id?}', [CategoryController::class, 'form'])->name(
 Route::post('/categories/save', [CategoryController::class, 'save'])->name('category.save');
 
 Route::get('/category/delete/{id}', [CategoryController::class, 'delete'])->name('category.delete');
+
+Route::get('/invoice/{id}', function($id){
+    $invoice = App\Models\Invoice::findOrfail($id);
+    return dd($invoice->products);
+});
